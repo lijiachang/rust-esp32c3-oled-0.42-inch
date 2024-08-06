@@ -1,0 +1,14 @@
+/home/username/esp/rust-esp32c3-oled-0.42-inch/target/debug/deps/libclang_sys-f338469880ecb307.rmeta: /home/username/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.8.1/src/lib.rs /home/username/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.8.1/src/support.rs /home/username/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.8.1/src/link.rs /home/username/esp/rust-esp32c3-oled-0.42-inch/target/debug/build/clang-sys-3d02a96388e75dfc/out/macros.rs /home/username/esp/rust-esp32c3-oled-0.42-inch/target/debug/build/clang-sys-3d02a96388e75dfc/out/common.rs /home/username/esp/rust-esp32c3-oled-0.42-inch/target/debug/build/clang-sys-3d02a96388e75dfc/out/dynamic.rs
+
+/home/username/esp/rust-esp32c3-oled-0.42-inch/target/debug/deps/libclang_sys-f338469880ecb307.rlib: /home/username/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.8.1/src/lib.rs /home/username/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.8.1/src/support.rs /home/username/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.8.1/src/link.rs /home/username/esp/rust-esp32c3-oled-0.42-inch/target/debug/build/clang-sys-3d02a96388e75dfc/out/macros.rs /home/username/esp/rust-esp32c3-oled-0.42-inch/target/debug/build/clang-sys-3d02a96388e75dfc/out/common.rs /home/username/esp/rust-esp32c3-oled-0.42-inch/target/debug/build/clang-sys-3d02a96388e75dfc/out/dynamic.rs
+
+/home/username/esp/rust-esp32c3-oled-0.42-inch/target/debug/deps/clang_sys-f338469880ecb307.d: /home/username/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.8.1/src/lib.rs /home/username/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.8.1/src/support.rs /home/username/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.8.1/src/link.rs /home/username/esp/rust-esp32c3-oled-0.42-inch/target/debug/build/clang-sys-3d02a96388e75dfc/out/macros.rs /home/username/esp/rust-esp32c3-oled-0.42-inch/target/debug/build/clang-sys-3d02a96388e75dfc/out/common.rs /home/username/esp/rust-esp32c3-oled-0.42-inch/target/debug/build/clang-sys-3d02a96388e75dfc/out/dynamic.rs
+
+/home/username/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.8.1/src/lib.rs:
+/home/username/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.8.1/src/support.rs:
+/home/username/.cargo/registry/src/index.crates.io-6f17d22bba15001f/clang-sys-1.8.1/src/link.rs:
+/home/username/esp/rust-esp32c3-oled-0.42-inch/target/debug/build/clang-sys-3d02a96388e75dfc/out/macros.rs:
+/home/username/esp/rust-esp32c3-oled-0.42-inch/target/debug/build/clang-sys-3d02a96388e75dfc/out/common.rs:
+/home/username/esp/rust-esp32c3-oled-0.42-inch/target/debug/build/clang-sys-3d02a96388e75dfc/out/dynamic.rs:
+
+# env-dep:OUT_DIR=/home/username/esp/rust-esp32c3-oled-0.42-inch/target/debug/build/clang-sys-3d02a96388e75dfc/out
