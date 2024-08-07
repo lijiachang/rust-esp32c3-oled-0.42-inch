@@ -705,6 +705,7 @@ dependencies = [
 name = "esp32-c3-led"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
  "display-interface",
  "embedded-graphics",
  "embedded-svc",

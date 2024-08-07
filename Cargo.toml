@@ -39,5 +39,7 @@ embedded-graphics = "0.8.1"
 
 display-interface="0.4.1"
 
+anyhow = "1.0.86"
+
 [build-dependencies]
 embuild = "0.32.0"

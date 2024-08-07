@@ -1,3 +1,4 @@
+// 这是一个失败的探索代码，请忽略它，随时可能会删除
 use display_interface::DisplayError;
 use embedded_graphics::{
     mono_font::{ascii::FONT_6X10, MonoTextStyleBuilder},
