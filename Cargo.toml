@@ -1,5 +1,5 @@
 [package]
-name = "esp32-c3-led"
+name = "rust-esp32c3-oled-0-42-inch"  # 0.42-inch
 version = "0.1.0"
 authors = ["username"]
 edition = "2021"
@@ -7,7 +7,7 @@ resolver = "2"
 rust-version = "1.77"
 
 [[bin]]
-name = "esp32-c3-led"
+name = "rust-esp32c3-oled-0-42-inch" # 0.42-inch
 harness = false # do not use the built in cargo test harness -> resolve rust-analyzer errors
 
 [profile.release]

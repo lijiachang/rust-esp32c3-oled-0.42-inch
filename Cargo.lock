@@ -702,21 +702,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "esp32-c3-led"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "display-interface",
- "embedded-graphics",
- "embedded-svc",
- "embuild",
- "esp-idf-svc",
- "esp-idf-sys",
- "log",
- "ssd1306",
-]
-
-[[package]]
 name = "fastrand"
 version = "2.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1278,6 +1263,21 @@ dependencies = [
  "spin",
  "untrusted",
  "windows-sys 0.52.0",
+]
+
+[[package]]
+name = "rust-esp32c3-oled-0-42-inch"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "display-interface",
+ "embedded-graphics",
+ "embedded-svc",
+ "embuild",
+ "esp-idf-svc",
+ "esp-idf-sys",
+ "log",
+ "ssd1306",
 ]
 
 [[package]]
