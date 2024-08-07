@@ -21,7 +21,7 @@ use embedded_graphics::{
 };
 use esp_idf_svc::hal::i2c::{I2cConfig, I2cDriver};
 use esp_idf_svc::hal::prelude::*;
-
+use serde::Deserialize;
 
 
 pub const WIDTH: usize = 128;
@@ -186,6 +186,13 @@ impl<'a> OriginDimensions for SSD1306<'a> {
     }
 }
 
+
+#[derive(Deserialize)]
+struct TickerPrice {
+    symbol: String,
+    price: String,
+}
+
 fn main() {
     // It is necessary to call this function once. Otherwise some patches to the runtime
     // implemented by esp-idf-sys might not link properly. See https://github.com/esp-rs/esp-idf-template/issues/71
@@ -267,11 +274,33 @@ fn main() {
         info!("响应内容：{body}");
 
         // display
-        display.clear();
-        display.text(body, 0, 0);
-        display.show();
+        // display.clear();
+        // display.text(body, 0, 0);
+        // display.show();
 
-        // todo 1. 使用serde解析出来symbol和price展示  2. 加入多个币种
+        // 1. 使用serde解析出来symbol和price展示  2. 加入多个币种
+        // Parse JSON
+        match serde_json::from_str::<TickerPrice>(body) {
+            Ok(ticker) => {
+                let symbol = ticker.symbol.replace("USDT", "");
+
+                if let Ok(price_float) = ticker.price.parse::<f64>() {
+                    let formatted_price = format!("{} {:.2}",symbol, price_float);
+
+                    // Display on OLED
+                    display.clear();
+                    display.text(&formatted_price, 0, 0);
+                    display.show();
+
+                    info!("Displayed: {} {}", symbol, formatted_price);
+                } else {
+                    info!("Failed to parse price");
+                }
+            },
+            Err(e) => {
+                info!("Failed to parse JSON: {}", e);
+            }
+        }
 
         FreeRtos::delay_ms(2000); // sleep 2s
     }
