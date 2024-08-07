@@ -9,10 +9,9 @@ Note: This is a special 0.42-inch screen, for which I have spent a considerable 
 This screen is slightly different from the common 0.42-inch screens available in the market. The starting point of this screen is (30, 14) on a 128x64 display.
 
 # introduce 介绍
-
-![esp32-c3.jpg](esp32-c3.jpg)
 ![Snipaste_2024-08-07_20-46-48.png](Snipaste_2024-08-07_20-46-48.png)
-![0.42-inch-oled.jpg](0.42-inch-oled.jpg)
+![Snipaste_2024-08-07_21-06-21.png](Snipaste_2024-08-07_21-06-21.png)
+![esp32-c3.jpg](esp32-c3.jpg)
 
 # generate project 生成项目
 cargo generate esp-rs/esp-idf-template cargo
