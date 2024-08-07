@@ -242,10 +242,21 @@ fn main() {
     }).unwrap();
 
     let mut clinet = Client::wrap(httpconnection);
-
-    // GET
     let url = "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT";
+
+    // oled
+    let i2c = peripherals.i2c0;
+    let sda = peripherals.pins.gpio5;
+    let scl = peripherals.pins.gpio6;
+
+    let config = I2cConfig::new().baudrate(400.kHz().into());
+    let i2c: I2cDriver<'static> = I2cDriver::new(i2c, sda, scl, &config).expect("i2c error:");
+
+    let mut display = SSD1306::new(i2c, 0x3C);
+    display.init();
+
     loop {
+        // GET
         let mut resp = clinet.get(url).unwrap().submit().unwrap();
         info!("响应状态：{}", resp.status());
 
@@ -254,6 +265,14 @@ fn main() {
         let br = try_read_full(&mut body, &mut buf).unwrap();
         let body = std::str::from_utf8(&buf[0..br]).unwrap();
         info!("响应内容：{body}");
+
+        // display
+        display.clear();
+        display.text(body, 0, 0);
+        display.show();
+
+        // todo 1. 使用serde解析出来symbol和price展示  2. 加入多个币种
+
         FreeRtos::delay_ms(2000); // sleep 2s
     }
 
