@@ -3,6 +3,7 @@
 * Wifi connect
 * Http client
 * Https client
+* Crypto Price display (BTC/ETH/SOL)
 
 注意，这是一个特殊的0.42寸屏幕，为此我耗费了很多时间编写驱动。此款屏幕与市面上常见的0.42寸的屏幕稍有差别，屏幕起点为12864的(30，14)
 Note: This is a special 0.42-inch screen, for which I have spent a considerable amount of time writing the driver. 
