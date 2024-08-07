@@ -11,6 +11,7 @@ This screen is slightly different from the common 0.42-inch screens available in
 # introduce 介绍
 ![Snipaste_2024-08-07_20-46-48.png](Snipaste_2024-08-07_20-46-48.png)
 ![Snipaste_2024-08-07_21-06-21.png](Snipaste_2024-08-07_21-06-21.png)
+![Snipaste_2024-08-07_22-18-17.jpg](Snipaste_2024-08-07_22-18-17.jpg)
 ![esp32-c3.jpg](esp32-c3.jpg)
 
 # generate project 生成项目
@@ -127,3 +128,10 @@ cargo b --bin https_client --release
 
 ## flash to esp32-c3  and monitor
 espflash flash -p /dev/ttyACM0  target/riscv32imc-esp-espidf/release/https_client --monitor
+
+# Crypto Price Display
+## build
+cargo b --bin crypto_price_display --release
+
+## flash to esp32-c3  and monitor
+espflash flash -p /dev/ttyACM0  target/riscv32imc-esp-espidf/release/crypto_price_display --monitor

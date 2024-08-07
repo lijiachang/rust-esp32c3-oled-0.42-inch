@@ -248,8 +248,8 @@ fn main() {
         ..Default::default()
     }).unwrap();
 
-    let mut clinet = Client::wrap(httpconnection);
-    let url = "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT";
+    let mut client = Client::wrap(httpconnection);
+    let url = "https://api.binance.com/api/v3/ticker/price?symbols=[%22BTCUSDT%22,%22ETHUSDT%22,%22SOLUSDT%22]";
 
     // oled
     let i2c = peripherals.i2c0;
@@ -264,38 +264,39 @@ fn main() {
 
     loop {
         // GET
-        let mut resp = clinet.get(url).unwrap().submit().unwrap();
+        let mut resp = client.get(url).unwrap().submit().unwrap();
         info!("响应状态：{}", resp.status());
 
         let (_headers, mut body) = resp.split();
-        let mut buf = [0_u8; 1024];
+        let mut buf = [0_u8; 2048]; // 增加缓冲区大小以适应更多数据
         let br = try_read_full(&mut body, &mut buf).unwrap();
         let body = std::str::from_utf8(&buf[0..br]).unwrap();
         info!("响应内容：{body}");
 
-        // display
-        // display.clear();
-        // display.text(body, 0, 0);
-        // display.show();
-
-        // 1. 使用serde解析出来symbol和price展示  2. 加入多个币种
         // Parse JSON
-        match serde_json::from_str::<TickerPrice>(body) {
-            Ok(ticker) => {
-                let symbol = ticker.symbol.replace("USDT", "");
+        match serde_json::from_str::<Vec<TickerPrice>>(body) {
+            Ok(tickers) => {
+                display.clear();
+                let mut y_offset = 0;
 
-                if let Ok(price_float) = ticker.price.parse::<f64>() {
-                    let formatted_price = format!("{} {:.2}",symbol, price_float);
+                for (index, ticker) in tickers.iter().enumerate() {
+                    let symbol = ticker.symbol.replace("USDT", "");
+                    if let Ok(price_float) = ticker.price.parse::<f64>() {
+                        let formatted_price = format!("{} {:.2}", symbol, price_float);
+                        display.text(&formatted_price, 0, y_offset);
+                        y_offset += 16; // 增加y偏移以显示下一行
 
-                    // Display on OLED
-                    display.clear();
-                    display.text(&formatted_price, 0, 0);
-                    display.show();
+                        info!("Displayed: {}", formatted_price);
+                    } else {
+                        info!("Failed to parse price for {}", symbol);
+                    }
 
-                    info!("Displayed: {} {}", symbol, formatted_price);
-                } else {
-                    info!("Failed to parse price");
+                    if index == 3 {
+                        break;
+                    }
                 }
+
+                display.show();
             },
             Err(e) => {
                 info!("Failed to parse JSON: {}", e);

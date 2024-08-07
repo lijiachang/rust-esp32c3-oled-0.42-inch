@@ -2,11 +2,13 @@
 cargo b --bin wifi --release
 cargo b --bin http_client --release
 cargo b --bin https_client --release
+cargo b --bin crypto_price_display --release
 
 # flash to esp32-c3  and monitor
 espflash flash -p /dev/ttyACM0  target/riscv32imc-esp-espidf/release/wifi --monitor
 espflash flash -p /dev/ttyACM0  target/riscv32imc-esp-espidf/release/http_client --monitor
 espflash flash -p /dev/ttyACM0  target/riscv32imc-esp-espidf/release/https_client --monitor
+espflash flash -p /dev/ttyACM0  target/riscv32imc-esp-espidf/release/crypto_price_display --monitor
 
 
 ```
@@ -199,5 +201,13 @@ I (7350) http_client: 响应内容：{
 I (4985) esp-x509-crt-bundle: Certificate validated
 I (5635) https_client: 响应状态：200
 I (5635) https_client: 响应内容：{"symbol":"BTCUSDT","price":"66616.02000000"}
+
+```
+
+```text
+I (122546) crypto_price_display: 响应内容：[{"symbol":"BTCUSDT","price":"56587.42000000"},{"symbol":"ETHUSDT","price":"2430.67000000"},{"symbol":"SOLUSDT","price":"151.09000000"}]
+I (122556) crypto_price_display: Displayed: BTC 56587.42
+I (122566) crypto_price_display: Displayed: ETH 2430.67
+I (122576) crypto_price_display: Displayed: SOL 151.09
 
 ```
