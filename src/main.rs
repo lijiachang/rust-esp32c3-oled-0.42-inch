@@ -1,14 +1,11 @@
-use display_interface::DisplayError;
 use embedded_graphics::{
     mono_font::{ascii::FONT_6X10, MonoTextStyleBuilder},
     pixelcolor::BinaryColor,
     prelude::*,
-    primitives::{Line, PrimitiveStyle},
     text::{Baseline, Text},
 };
 use esp_idf_svc::hal::i2c::{I2cConfig, I2cDriver};
 use esp_idf_svc::hal::prelude::*;
-use ssd1306::{prelude::*, I2CDisplayInterface, Ssd1306};
 
 pub const WIDTH: usize = 128;
 pub const HEIGHT: usize = 64;
@@ -19,7 +16,7 @@ pub struct SSD1306<'a> {
     addr: u8,
     buffer: [u8; WIDTH * PAGES],
     x_offset: u8,
-    y_offset: u8
+    y_offset: u8,
 }
 
 ///此款屏幕与市面上常见的0.42寸的屏幕稍有差别，屏幕起点为12864的(30，14)
@@ -157,7 +154,7 @@ impl<'a> DrawTarget for SSD1306<'a> {
 
     fn draw_iter<I>(&mut self, pixels: I) -> Result<(), Self::Error>
     where
-        I: IntoIterator<Item = Pixel<Self::Color>>,
+        I: IntoIterator<Item=Pixel<Self::Color>>,
     {
         for Pixel(coord, color) in pixels.into_iter() {
             self.set_pixel(coord.x as usize, coord.y as usize, color.is_on());
